@@ -1,11 +1,15 @@
-var myApp=angular.module( 'myApp', [] );
-myApp.controller( 'WhereMyPeeps', [ '$http', function( $http ){
+var myApp = angular.module( 'myApp', [] );
+
+myApp.controller( 'WhereMyPeeps', function( $http ){ //removed '$http'
+
 var vm = this;
+
 vm.addRecord = function(){
 var objectToSend ={
-name= vm.nameIn,
-location= vm.locationIn,
+name: vm.nameIn,
+location: vm.locationIn,
 };
+
 $http({
 method: 'POST',
 url: '/testPost',
@@ -21,8 +25,8 @@ url: '/getRecords',
 }).then( function( response ){
 vm.allTheRecords = response;
 console.log( vm.allTheRecords );
-}), function myError( response ){
+}); function myError( response ){ //changed comma to semi
 console.log( response.statusText );
+}
 };
-};
-}]);
+});
