@@ -46,6 +46,18 @@ newRecord.save().then(function(){
 });
 });// end app.post
 
+app.delete('/deleteRecord/:id',function(req,res){
+  console.log('got this:',req.params.id);
+  ourModel.remove({_id: req.params.id},function(err){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.send(200);
+    }
+  });
+});
+
 app.listen( 8080, 'localhost', function( req, res ){
 console.log( 'listening on 8080' );
 });

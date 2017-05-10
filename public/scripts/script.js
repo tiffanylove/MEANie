@@ -34,4 +34,18 @@ console.log( response.statusText );
 }
 };//end getRecords
 vm.getRecords();
+
+
+vm.deleteRecord = function(id){
+   console.log('delete',id);
+
+   $http({
+     method: 'DELETE',
+     url: '/deleteRecord/' + id,
+   }).then(function mySuccess(response){
+     vm.getRecords();
+   }, function myBad(response){
+     console.log(response);
+   });
+ };
 });//end of controller
