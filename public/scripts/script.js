@@ -44,7 +44,7 @@ vm.deleteRecord = function(id){
      url: '/deleteRecord/' + id,
    }).then(function mySuccess(response){
      vm.getRecords();
-   }, function myBad(response){
+   }, function deleted(response){
      console.log(response);
    });
  };
